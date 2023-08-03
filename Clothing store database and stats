@@ -1,0 +1,37 @@
+--Create a clothing store database
+  
+CREATE TABLE unice_collection (id INTEGER PRIMARY KEY, clothes TEXT, size INTEGER, quantity INTEGER, price INTEGER);
+
+INSERT INTO unice_collection VALUES (1, "Shirts", 28, 24, 150);
+
+INSERT INTO unice_collection VALUES (2, "Skirts", 14, 12, 120);
+
+INSERT INTO unice_collection VALUES (3, "Blouse", 10, 6, 60);
+
+INSERT INTO unice_collection VALUES (4, "Shorts", 12, 36, 30);
+
+INSERT INTO unice_collection VALUES (5, "Dresses", 14, 100, 180);
+
+INSERT INTO unice_collection VALUES (6, "Skorts", 10, 15, 40);
+
+INSERT INTO unice_collection VALUES (7, "Shoes", 40, 28, 120);
+
+INSERT INTO unice_collection VALUES (8, "Bags", 10, 50, 100);
+
+INSERT INTO unice_collection VALUES (9, "Scurf", 12, 15, 80);
+
+INSERT INTO unice_collection VALUES (10, "Wallet", 12, 18, 30);
+
+INSERT INTO unice_collection VALUES (11, "Handkerchief", 2, 6, 19);
+
+INSERT INTO unice_collection VALUES (12, "Socks", 16, 25, 16);
+
+INSERT INTO unice_collection VALUES (13, "Bra", 12, 16, 18);
+
+INSERT INTO unice_collection VALUES (14, "Biker shorts", 18, 9, 39);
+
+INSERT INTO unice_collection VALUES (15, "Stockings", 18, 27, 39);
+
+--display the database ordered by price greater than 100.
+SELECT * FROM unice_collection WHERE price >100 ORDER BY price;
+
