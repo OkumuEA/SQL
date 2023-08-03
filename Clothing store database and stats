@@ -35,3 +35,13 @@ INSERT INTO unice_collection VALUES (15, "Stockings", 18, 27, 39);
 --display the database ordered by price greater than 100.
 SELECT * FROM unice_collection WHERE price >100 ORDER BY price;
 
+--what is the sum of items in the store?
+SELECT SUM(quantity) FROM unice_collection;
+
+--display the number of items by size.
+SELECT size, SUM(quantity) FROM unice_collection GROUP BY size;
+
+
+
+
+
