@@ -1,0 +1,97 @@
+/* Create table about singers/songwriters, including their names, and where they come from */
+
+CREATE TABLE famous_singers (id INTEGER PRIMARY KEY, singer_name TEXT, state TEXT, country TEXT);
+
+INSERT INTO famous_singers VALUES (1, "Taylor Swift", "PA", "USA");
+
+INSERT INTO famous_singers VALUES (2, "Ed Sheeran", "WY", "England");
+
+INSERT INTO famous_singers VALUES (3, "Adele", "London", "England");
+
+INSERT INTO famous_singers VALUES (4, "Beyonce", "Texas", "USA");
+
+INSERT INTO famous_singers VALUES (5, "John Lennon", "Liverpool", "England");
+
+INSERT INTO famous_singers VALUES (6, "Bob Dylan", "Minnesota", "USA");
+
+INSERT INTO famous_singers VALUES (7, "Rihanna", "Saint Michael", "Barbados");
+
+INSERT INTO famous_singers VALUES (8, "Elton John", "Middlesex", "England");
+
+INSERT INTO famous_singers VALUES (9, "Freddie Mercury", "Stone Town", "Zanzibar");
+
+INSERT INTO famous_singers VALUES (10, "Justin Bieber", "Ontario", "Canada");
+
+/* create a table of their songs, year the songs were released and number of copies sold */
+
+CREATE TABLE songs (id INTEGER PRIMARY KEY, song_name TEXT, release_date INTEGER, estimated_sales TEXT);
+
+INSERT INTO songs VALUES (1, "Love Story", "2008", ">18M Copies");
+
+INSERT INTO songs VALUES (2, "Shape of You", "2017", ">41M Copies");
+
+INSERT INTO songs VALUES (3, "Someone Like You", "2011", ">17M Copies");
+
+INSERT INTO songs VALUES (4, "Halo", "2008", ">8M Copies");
+
+INSERT INTO songs VALUES (5, "Imagine", "1971", "");
+
+INSERT INTO songs VALUES (6, "Like a Rolling Stone", "1965", "");
+
+INSERT INTO songs VALUES (7, "Umbrella", "2007", ">6M Copies");
+
+INSERT INTO songs VALUES (8, "Your Song", "1970", "");
+
+INSERT INTO songs VALUES (9, "Bohemian Rhapsody", "1975", ">6M Copies");
+
+INSERT INTO songs VALUES (10, "Sorry", "2015", ">10M Copies");
+
+SELECT * FROM famous_singers;
+
+SELECT * FROM songs;
+
+/*INNER JOIN the two tables*/
+
+SELECT famous_singers.singer_name, songs.song_name, songs.release_date
+FROM famous_singers
+JOIN songs 
+ON famous_singers.id = songs.id;
+
+/*LEFT JOIN the two tables*/
+
+SELECT famous_singers.singer_name, songs.song_name, songs.release_date
+FROM famous_singers 
+LEFT JOIN songs 
+ON famous_singers.id = songs.id;
+
+/*OUTER JOIN (with union)*/
+SELECT famous_singers.singer_name, songs.song_name, songs.release_date, songs.estimated_sales
+FROM famous_singers 
+LEFT OUTER JOIN songs 
+ON famous_singers.id = songs.id;
+
+/*CROSS JOIN*/
+
+SELECT * FROM famous_singers, songs;
+
+/*Implicit INNER JOIN*/
+
+SELECT * FROM famous_singers, songs
+WHERE famous_singers.id = songs.id; 
+
+/*Explicit INNER JOIN*/
+
+SELECT * FROM famous_singers
+JOIN songs
+ON famous_singers.id = songs.id;
+
+/*using JOIN to select only >10M estimated sales*/
+
+SELECT song_name, release_date, estimated_sales
+FROM songs
+JOIN famous_singers
+ON songs.id = famous_singers.id
+WHERE estimated_sales = ">10M Copies";
+
+
+
